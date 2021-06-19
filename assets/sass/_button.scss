@@ -1,0 +1,101 @@
+a.btn, button.btn, div.btn {
+    display: inline-block;
+    padding: 7px 17px;
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    @include border-radius(4px);
+    outline: 0;
+    @media screen and (min-width: 1024px) {
+        padding: 12px 28px;
+    }
+    i.icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &.btn-contained {
+        &.btn-primary {
+            color: $white;
+            background-color: $primary;
+            border-color: $primary;
+            &:hover {
+                background-color: $primary-variant;
+                border-color: $primary-variant;
+            }
+        }
+        &.btn-white {
+            color: $black;
+            background-color: $white;
+            border-color: $gray-500;
+            &:hover {
+                border-color: $gray-700;
+            }
+        }
+        &.btn-facebook {
+            color: $white;
+            background-color: $facebook;
+            border-color: $facebook;
+            &:hover {
+                background-color: darken($facebook, 5%);
+                border-color: darken($facebook, 5%);
+            }
+        }
+    }
+    &.btn-outlined {
+        background-color: $white;
+        &.btn-primary {
+            color: $primary;
+            border-color: $primary;
+            &:hover {
+                color: $primary-variant;
+                border-color: $primary-variant;
+            }
+        }
+    }
+    &.btn-small {
+        padding: 4px 13px;
+        font-size: $paragraph*1.4;
+    }
+    &.btn-100 {
+        width: 100%;
+    }
+}
+
+a[class*='link-'],
+button[class*='link-'],
+div[class*='link-'] {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.text-primary {
+    color: $primary;
+}
+.link-primary {
+    color: $primary;
+    &:hover {
+        color: $primary-variant;
+    }
+}
+.link-black {
+    color: $black;
+    &:hover {
+        color: $primary;
+    }
+}
+.text-gray {
+    color: $gray-600;
+}
+.link-gray {
+    color: $gray-600;
+    &:not([href]):not([tabindex]) {
+        color: inherit;
+        @include opacity(0.3);
+        cursor: not-allowed;
+    }
+    &:hover {
+        color: $primary-variant;
+    }
+}

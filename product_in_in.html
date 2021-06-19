@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v11.0&appId=494725780578575&autoLogAppEvents=1" nonce="xH2l49j8"></script>
+    <nav class="navbar">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a class="navbar-brand" href="/">Huizove</a>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">產品介紹</a>
+                </li>
+                <li class="nav-item">
+                    <button id="tracking-btn" class="nav-link">訂單查詢</button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">付款及運送方式</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">客服中心</a>
+                </li>
+            </ul>
+            <div class="navbar-right d-flex align-items-center">
+                <button id="login" class="btn btn-contained btn-primary">會員登入</button>
+                <a href="#!" class="cart">
+                    <i class="icon icon-cart">
+                        <span>0</span>
+                    </i>
+                    <span>購物車</span>
+                </a>
+                <button class="navbar-toggler" type="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div id="signin" class="modal">
+        <div class="modal-dialog d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                <h2 class="mb-20">登入</h2>
+                <form id="msform" name="msform" method="post" action="">
+                    <button type="button" class="btn-close">
+                        <i class="icon icon-close"></i>
+                    </button>
+                    <div class="row">
+                        <div class="col-6 pr-10">
+                            <button class="btn btn-contained btn-facebook btn-100"><i class="icon icon-facebook mr-5"></i>Facebook登入</button>
+                        </div>
+                        <div class="col-6 pl-10">
+                            <button class="btn btn-contained btn-white btn-100">Google登入</button>
+                        </div>
+                    </div>
+                    <div class="hr-or my-20">
+                        <span>或</span>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <input id="account2" type="text" name="account2" id="account2" placeholder="帳號／Email" />
+                        <input id="pass" type="password" name="pass" placeholder="密碼／Password" />
+                        <button id="chklogin" class="btn btn-contained btn-primary" type="submit" name="next" onclick="chklogin_in();">登入</button>
+                        <div class="d-flex flex-wrap justify-content-between mt-10">
+                            <button class="link-primary" onclick="changepwd()">忘記密碼？</button>
+                            <div class="d-flex align-items-center">
+                                <div class="pr-10">還沒有帳號嗎？</div>
+                                <div class="btn btn-primary btn-outlined btn-small" onclick="next_step()">註冊</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="password" class="modal">
+        <div class="modal-dialog d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                <h2 class="mb-20">忘記密碼</h2>
+                <form id="msform" name="msform" method="post" action="">
+                    <button type="button" class="btn-close">
+                        <i class="icon icon-close"></i>
+                    </button>
+                    <div class="d-flex flex-column">
+                        <input type="text" name="change_pwd1" id="change_pwd1" placeholder="請輸入會員帳號／Email">
+                        <div class="row">
+                            <div class="col-6 pr-10">
+                                <button class="btn btn-100 btn-outlined btn-primary" type="submit" name="next" onclick="changepwd_re();">返回</button>
+                            </div>
+                            <div class="col-6 pl-10">
+                                <button class="btn btn-100 btn-contained btn-primary" type="submit" name="next" onclick="changepwd_chk();">確定</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="signup" class="modal">
+        <div class="modal-dialog d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                <h2 class="mb-20">註冊</h2>
+                <form id="msform" name="msform" method="post" action="">
+                    <button type="button" class="btn-close">
+                        <i class="icon icon-close"></i>
+                    </button>
+                    <div class="row">
+                        <div class="col-6 pr-10">
+                            <button class="btn btn-contained btn-facebook btn-100"><i class="icon icon-facebook mr-5"></i>Facebook登入</button>
+                        </div>
+                        <div class="col-6 pl-10">
+                            <button class="btn btn-contained btn-white btn-100">Google登入</button>
+                        </div>
+                    </div>
+                    <div class="hr-or my-20">
+                        <span>或</span>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <input type="text" name="account" id="account" placeholder="帳號／Email" onblur="checkAccount(this.value)" />
+                        <input type="password" name="pass2" id="pass2" placeholder="密碼／Password" />
+                        <input type="text" name="member_name" id="member_name" placeholder="姓名／Name" />
+                        <input type="text" name="phone" id="phone" placeholder="手機／Phone" />
+                        <button class="btn btn-contained btn-primary" type="submit" name="next" onclick="chkinput();">註冊</button>
+                        <p class="mt-10 mb-0">
+                            註冊即表示同意此網站提供的<a href="#!" class="link-primary">服務條款</a>、<a href="#!" class="link-primary">支付服務條款</a>、<a href="#!" class="link-primary">隱私政策條款</a>。
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tracking" class="modal">
+        <div class="modal-dialog d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                <h2 class="mb-20">訂單查詢</h2>
+                <form id="msform" name="msform" method="post" action="">
+                    <button type="button" class="btn-close">
+                        <i class="icon icon-close"></i>
+                    </button>
+                    <input type="text" name="" id="" placeholder="請輸入訂單編號">
+                    <input type="tel" name="" id="" placeholder="請輸入手機／Phone">
+                    <div class="row align-items-center">
+                        <div class="col-sm-3 col-4 pr-0">
+                            <img src="https://img-blog.csdn.net/20170921091731029" width="95" alt="">
+                        </div>
+                        <div class="col-sm-9 col-8">
+                            <input type="text" class="my-0" placeholder="請輸入驗證碼">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-100 btn-contained btn-primary mt-20">查詢</button>
+                    <p class="mt-10 mb-0">
+                        <div id="find-order" class="link-primary">如何找到您的訂單編號？</div>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="order" class="modal">
+        <div class="modal-dialog d-flex align-items-center justify-content-center">
+            <div class="modal-content">
+                <h2 class="mb-20">如何找到你的訂單編號</h2>
+                <button type="button" class="btn-close">
+                    <i class="icon icon-close"></i>
+                </button>
+                <p class="my-0">
+                    您可以在您「訂單確認」的電子郵件中的頂文字找到你的訂單編號。如果仍無法找到訂單編號，請致電我們：<a href="tel:0800020021" class="link-primary">0800-020-021</a>。
+                </p>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="banner">
+            <div class="banner-title">
+                滿699起免運
+            </div>
+            <img src="assets/images/product-banner@3x.jpg" width="100%" alt="">
+        </div>
+        <div class="container pt-40">
+            <div class="row">
+                <div class="col-lg-2 col-md-3">
+                    <nav class="navbar-left">
+                        <ul>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="product-in.html">家庭蔬菜箱</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product-in.html">小資蔬菜箱</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product-in.html">綜合蔬菜箱</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="product-area col-lg-10 col-md-9 pl-xl-40">
+                    <div class="product-header">
+                        <div class="row">
+                            <div class="col col-text">
+                                <h1 class="my-0">一週蔬菜箱-家庭(4~6人)</h1>
+                                <div class="label my-10">預購商品</div>
+                                <div class="col-img my-lg-0 mt-20 mb-40">
+                                    <div class="slider slider-for">
+                                        <div>
+                                            <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                        </div>
+                                        <div>
+                                            <img src="https://dummyimage.com/500x500/bbb/fff" width="100%" alt="">
+                                        </div>
+                                        <div>
+                                            <img src="https://dummyimage.com/500x500/999/fff" width="100%" alt="">
+                                        </div>
+                                        <div>
+                                            <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                        </div>
+                                        <div>
+                                            <img src="https://dummyimage.com/500x500/999/fff" width="100%" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="slider slider-nav mt-20 px-40">
+                                        <div>
+                                            <div class="px-5">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="px-5">
+                                                <img src="https://dummyimage.com/500x500/bbb/fff" width="100%" alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="px-5">
+                                                <img src="https://dummyimage.com/500x500/999/fff" width="100%" alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="px-5">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="px-5">
+                                                <img src="https://dummyimage.com/500x500/999/fff" width="100%" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="social-group d-md-flex d-none align-items-center justify-content-center mt-40">
+                                        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-line line-circle"></a>
+                                        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-facebook"></a>
+                                        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-instagram instagram-circle"></a>
+                                        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-youtube youtube-circle"></a>
+                                    </div>
+                                </div>
+                                <div class="price my-20 d-flex align-items-center">
+                                    <div class="origin mr-30">NT$1,800</div>
+                                    <div class="sale">NT$1,500</div>
+                                </div>
+                                <div class="d-flex align-items-center my-20">
+                                    <div class="mr-20">數量</div>
+                                    <div class="quantity d-flex align-items-center">
+                                        <button class="quantity-minus"><i class="icon icon-minus"></i></button>
+                                        <input id="product_quantity" type="numeric" value="1" />
+                                        <button class="quantity-plus"><i class="icon icon-plus"></i></button>
+                                    </div>
+                                </div>
+                                <p class="my-20">
+                                    蔬菜箱方案是將新鮮水果和蔬菜（通常是當地種植的）和有機食品，由種植者合作社和批發商網絡提供的產品直接運送到客戶。通常，這些產品固定份量出售，而且根據季節的不同，而且根據季節的不同，由種植者合作社和批發商網絡，而且根據季節的不同，而且根據季節的不同提供的產品直接運送到客戶產品可能會有所不同。
+                                </p>
+                                <div class="more-section pt-10">
+                                    <div class="h4 pb-10">
+                                        加購產品
+                                    </div>
+                                    <div class="more-group">
+                                        <label for="id-345908" class="more-item d-flex align-items-start">
+                                            <span class="more-img">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </span>
+                                            <span class="more-body">
+                                                <span class="more-title">
+                                                    加購限定 - 季節性蔬果
+                                                </span>
+                                                <span class="more-essay">
+                                                    包含六種有機新鮮當季蔬菜、十種時令水果、兩款根莖類、三盒有機蛋
+                                                </span>
+                                                <span class="more-weight">
+                                                    3000g/箱
+                                                </span>
+                                            </span>
+                                            <span class="more-select d-flex align-items-center justify-content-end">
+                                                <div class="pr-10">
+                                                    $999
+                                                </div>
+                                                <input type="checkbox" name="id-345908" id="id-345908" />
+                                            </span>
+                                        </label>
+                                        <label for="id-523451" class="more-item d-flex align-items-start">
+                                            <span class="more-img">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </span>
+                                            <span class="more-body">
+                                                <span class="more-title">
+                                                    加購限定 - 季節性蔬果
+                                                </span>
+                                                <span class="more-essay">
+                                                    包含六種有機新鮮當季蔬菜、十種時令水果、兩款根莖類、三盒有機蛋
+                                                </span>
+                                                <span class="more-weight">
+                                                    3000g/箱
+                                                </span>
+                                            </span>
+                                            <span class="more-select d-flex align-items-center justify-content-end">
+                                                <div class="pr-10">
+                                                    $999
+                                                </div>
+                                                <input type="checkbox" name="id-523451" id="id-523451" />
+                                            </span>
+                                        </label>
+                                        <label for="id-345234" class="more-item d-flex align-items-start">
+                                            <span class="more-img">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </span>
+                                            <span class="more-body">
+                                                <span class="more-title">
+                                                    加購限定 - 季節性蔬果
+                                                </span>
+                                                <span class="more-essay">
+                                                    包含六種有機新鮮當季蔬菜、十種時令水果、兩款根莖類、三盒有機蛋
+                                                </span>
+                                                <span class="more-weight">
+                                                    3000g/箱
+                                                </span>
+                                            </span>
+                                            <span class="more-select d-flex align-items-center justify-content-end">
+                                                <div class="pr-10">
+                                                    $999
+                                                </div>
+                                                <input type="checkbox" name="id-345234" id="id-345234" />
+                                            </span>
+                                        </label>
+                                        <label for="id-123145" class="more-item d-flex align-items-start">
+                                            <span class="more-img">
+                                                <img src="https://dummyimage.com/500x500/aaa/fff" width="100%" alt="">
+                                            </span>
+                                            <span class="more-body">
+                                                <span class="more-title">
+                                                    加購限定 - 季節性蔬果
+                                                </span>
+                                                <span class="more-essay">
+                                                    包含六種有機新鮮當季蔬菜、十種時令水果、兩款根莖類、三盒有機蛋
+                                                </span>
+                                                <span class="more-weight">
+                                                    3000g/箱
+                                                </span>
+                                            </span>
+                                            <span class="more-select d-flex align-items-center justify-content-end">
+                                                <div class="pr-10">
+                                                    $999
+                                                </div>
+                                                <input type="checkbox" name="id-123145" id="id-123145" />
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-100 btn-contained btn-primary mt-40">
+                                    購買
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-body mt-40 pt-40"></div>
+                    <div class="product-footer pt-40">
+                        <div class="row align-items-center">
+                            <div class="col-lg-2 col-4 text-left">
+                                <a disabled class="link-gray">
+                                    <i class="icon icon-angle-left"></i><span>上一項</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-4 offset-lg-2 text-center">
+                                <a href="#!" class="link-primary">
+                                    返回列表
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-4 offset-lg-2 text-right">
+                                <a href="#!" class="link-gray">
+                                    <span>下一項</span><i class="icon icon-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="fixed-fuction">
+        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-line line-circle"></a>
+        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-messenger messenger-circle"></a>
+        <a href="#!" target="_blank" rel="noopener noreferrer" class="icon icon-phone phone-circle"></a>
+        <a href="#" class="icon icon-angle-up white-circle"></a>
+    </div>
+    <div class="fixed-cart py-20">
+        <div class="container d-flex flex-sm-row flex-column align-items-center">
+            <a href="#!" target="_blank" rel="noopener noreferrer" class="line-btn">
+                <i class="icon icon-line line-circle"></i>
+                <span>加入LINE好友諮詢：@Huizove</span>
+            </a>
+            <button class="btn btn-contained btn-primary btn-100 mt-sm-0 mt-10">立即結帳</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container py-40">
+            <a class="navbar-brand mb-10" href="/">Huizove</a>
+            <div class="row align-items-center">
+                <div class="col-xxl-3 col-xl-4 col-lg-4 col-sm-6">
+                    <div class="detail-group">
+                        <a href="#!" target="_blank" rel="noopener noreferrer" class="detail-item">
+                            <i class="icon icon-location_pin"></i>
+                            <span>台北市內湖區洲子街246號</span>
+                        </a>
+                        <a href="mailto:service@nehuizove.com" class="detail-item">
+                            <i class="icon icon-envelope"></i>
+                            <span>service@nehuizove.com</span>
+                        </a>
+                        <a href="tel:0223452345" class="detail-item">
+                            <i class="icon icon-phone"></i>
+                            <span>02-2345-2345</span>
+                        </a>
+                        <a href="tel:0224564563" class="detail-item">
+                            <i class="icon icon-fax"></i>
+                            <span>02-2456-4563</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-sm-6 px-xxl-40 mt-sm-0 mt-20 social-group d-flex flex-column justify-content-between">
+                    <a href="#!" target="_blank" rel="noopener noreferrer" class="social-item social-line">
+                        <i class="icon icon-line line-circle"></i>
+                        <span>加入LINE好友：@Huizove</span>
+                    </a>
+                    <a href="#!" target="_blank" rel="noopener noreferrer" class="social-item social-instagram">
+                        <i class="icon icon-instagram instagram-circle"></i>
+                        <span>Instagram：Huizove</span>
+                    </a>
+                    <a href="#!" target="_blank" rel="noopener noreferrer" class="social-item social-facebook">
+                        <i class="icon icon-facebook"></i>
+                        <span>歡迎加入粉絲團：Huizove</span>
+                    </a>
+                </div>
+                <div class="col-xxl-6 col-xl-5 col-lg-4 text-center mt-lg-0 mt-20">
+                    <div class="fb-page" data-href="https://www.facebook.com/MedPartnerTW" data-tabs="" data-width="500" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/MedPartnerTW" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MedPartnerTW">MedPartner 美的好朋友</a></blockquote></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center">
+            Copyright © 2021 Huizove. All rights reserved.
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="assets/js/style.js"></script>
+</body>
+
+</html>

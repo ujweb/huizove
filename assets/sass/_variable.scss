@@ -1,0 +1,81 @@
+$icomoon-font-family: "huizove" !default;
+$icomoon-font-path: "../fonts" !default;
+
+$icon-minus: "\e90a";
+$icon-plus: "\e909";
+$icon-play_arrow: "\e90b";
+$icon-location_pin: "\e905";
+$icon-close: "\e680";
+$icon-angle-up: "\e682";
+$icon-angle-right: "\e684";
+$icon-angle-left: "\e686";
+$icon-angle-down: "\e688";
+$icon-cart: "\e66e";
+$icon-youtube: "\e900";
+$icon-messenger: "\e901";
+$icon-facebook: "\e902";
+$icon-instagram: "\e903";
+$icon-line: "\e904";
+$icon-envelope: "\e906";
+$icon-phone: "\e907";
+$icon-fax: "\e908";
+
+$paragraph:   0.625rem !default;
+
+$line: #00c300;
+$instagram: #e4405f;
+$facebook: #1877f2;
+// $messenger: #00b2ff;
+$messenger: #0a7cff;
+$youtube: #f00;
+$red: $youtube;
+$orange: #FA5100;
+
+$white: #fff !default;
+$gray-100: #fafafa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
+$green: #77BF2B !default;
+$green-variant: darken(#77BF2B, 5%) !default;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "white": $white,
+    "gray": $gray-600,
+    "gray-dark": $gray-800
+  ),
+  $colors
+);
+
+$primary: $green !default;
+$primary-variant: $green-variant !default;
+$secondary: $gray-600 !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;

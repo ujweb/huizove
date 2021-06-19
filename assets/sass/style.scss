@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@import "variable";
+@import "mixin";
+@import "font";
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    padding-bottom: 80px; // fixed-cart高度
+    @media screen and (min-width: 1024px) {
+        padding-bottom: 90px; // fixed-cart高度
+        font-family: "Roboto", "Noto Sans TC", sans-serif;
+    }
+    &.modal-open, &.opened {
+        overflow: hidden;
+    }
+}
+
+button {
+    outline: 0 !important;
+    cursor: pointer;
+}
+a, button.btn, button.nav-link, div.btn {
+    text-decoration: none;
+    @include breakpoint(1024px) {
+        @include transition(color .2s, border .2s, background .2s, box-shadow .2s);
+    }
+}
+
+@import "icon";
+@import "button";
+@import "modal";
+@import "navbar";
+@import "fixed";
+@import "footer";
+@import "slick";
+
+.banner {
+    position: relative;
+    img {
+        display: block;
+    }
+    .banner-title {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        padding-left: 0.24em;
+        color: $white;
+        font-size: $paragraph*3.6;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 0.24em;
+        line-height: 1.15;
+        text-shadow: 0 0 20px rgba($black, 0.4);
+        @include translateY(-50%);
+        @include breakpoint(768px) {
+            font-size: $paragraph*4.8;
+        }
+        @include breakpoint(768px) {
+            font-size: $paragraph*6;
+        }
+        @include breakpoint(1024px) {
+            font-size: $paragraph*7.2;
+        }
+    }
+}
+
+@import "product";

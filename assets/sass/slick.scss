@@ -1,0 +1,20 @@
+@import "variable";
+@import "mixin";
+
+button.slick-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    &.slick-prev {
+        left: 0;
+    }
+    &.slick-next {
+        right: 0;
+    }
+    i.icon {
+        font-size: $paragraph*4;
+    }
+}

@@ -1,0 +1,280 @@
+.banner-product {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    min-height: 500px;
+    text-align: center;
+    background-image: url('../images/table@3x.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    @media screen and (min-width: 992px) {
+        padding-top: 100px;
+    }
+    img {
+        max-width: 550px;
+        width: 100%;
+    }
+    h1 {
+        line-height: 1.25;
+        span {
+            display: block;
+            &:first-child {
+                padding-left: 0.2em;
+                color: $primary;
+                font-size: $paragraph*7.2;
+                letter-spacing: 0.2em;
+                @media screen and (min-width: 360px) {
+                    padding-left: 0.24em;
+                    font-size: $paragraph*7.8;
+                    letter-spacing: 0.24em;
+                }
+                @media screen and (min-width: 425px) {
+                    font-size: $paragraph*9.6;
+                }
+            }
+            &:last-child {
+                padding-left: 0.2em;
+                font-size: $paragraph*5.4;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                @media screen and (min-width: 360px) {
+                    font-size: $paragraph*6;
+                }
+                @media screen and (min-width: 425px) {
+                    font-size: $paragraph*7.2;
+                }
+            }
+        }
+    }
+    h2 {
+        padding-left: 0.35em;
+        font-size: $paragraph*2.4;
+        font-weight: 400;
+        letter-spacing: 0.35em;
+        @media screen and (min-width: 425px) {
+            font-size: $paragraph*3.2;
+        }
+    }
+    a {
+        width: 87%;
+        font-size: $paragraph*1.8;
+        @include border-radius(50px);
+        @media screen and (min-width: 425px) {
+            font-size: $paragraph*2.4;
+        }
+    }
+}
+
+.product-area {
+    .product-header {
+        .col-img {
+            width: 100%;
+            letter-spacing: normal;
+            @media screen and (min-width: 1024px) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 420px;
+                z-index: 1;
+            }
+        }
+        .social-group {
+            a {
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: $paragraph*2;
+                &.icon-facebook {
+                    color: $facebook;
+                    font-size: $paragraph*3.2;
+                }
+            }
+        }
+        .col-text {
+            position: relative;
+            width: 100%;
+            letter-spacing: 0.2em;
+            @media screen and (min-width: 1024px) {
+                padding-left: 460px;
+            }
+        }
+        h1 {
+            font-size: $paragraph*3.2;
+        }
+        .label {
+            display: table;
+            padding: 0.25em 0.25em 0.25em 0.45em;
+            color: $primary;
+            border: 1px solid $primary;
+            @include border-radius(4px);
+        }
+        .price {
+            font-size: $paragraph*2.2;
+            .origin {
+                color: $gray-600;
+                font-weight: 300;
+                text-decoration: line-through;
+            }
+            .sale {
+                color: $red;
+                font-weight: 500;
+            }
+        }
+        .more-section {
+            border-top: 1px solid $gray-400;
+        }
+        .more-group {
+            max-height: 200px;
+            letter-spacing: 0.1em;
+            overflow-y: scroll;
+            &::-webkit-scrollbar-track {
+                background-color: $gray-200;
+                @include border-radius(4px);
+            }
+            &::-webkit-scrollbar {
+                width: 6px;
+                background-color: $gray-200;
+                @include border-radius(4px);
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $gray-400;
+                @include border-radius(4px);
+            }
+            .more-item {
+                display: block;
+                width: 100%;
+                padding: 10px 20px 10px 0;
+                + .more-item {
+                    padding-top: 20px;
+                    border-top: 1px solid $gray-400;
+                }
+                span {
+                    display: block;
+                }
+                .more-img {
+                    width: 80px;
+                }
+                .more-body {
+                    width: calc(100% - 180px);
+                    padding-left: 20px;
+                    .more-essay, .more-weight {
+                        font-size: $paragraph*1.4;
+                    }
+                    .more-essay {
+                        margin-top: 10px;
+                        margin-bottom: 5px;
+                    }
+                }
+                .more-select {
+                    width: 100px;
+                    font-size: $paragraph*1.4;
+                }
+            }
+        }
+    }
+    .product-body {
+        border-top: 1px solid $gray-400;
+        img {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+        }
+        table {
+            width: 100% !important;
+        }
+        iframe[src*='youtube'] {
+            width: 100% !important;
+        }
+    }
+    .product-footer {
+        a {
+            display: block;
+            > * {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .icon {
+                font-size: 2em;
+                font-weight: bold;
+            }
+            &.link-primary {
+                letter-spacing: 0.2em;
+            }
+        }
+    }
+}
+
+.quantity {
+    > * {
+        padding: 0;
+        border: solid $gray-200;
+        outline: 0 !important;
+    }
+    button {
+        width: $paragraph*4.5;
+        color: $black;
+        background-color: $gray-200;
+        border-width: 1px;
+        @include breakpoint(1024px) {
+            @include transition(color .2s, border .2s, background .2s, box-shadow .2s);
+        }
+        &:hover {
+            background-color: $gray-300;
+            border-color: $gray-200;
+        }
+        &.quantity-minus {
+            @include border-radius(4px 0 0 4px);
+        }
+        &.quantity-plus {
+            @include border-radius(0 4px 4px 0);
+        }
+        > i {
+            display: block;
+            line-height: $paragraph*4.5;
+        }
+    }
+    input {
+        width: 100px;
+        line-height: $paragraph*4.5;
+        text-align: center;
+        background-color: $white;
+        border-width: 1px 0;
+    }
+}
+
+.product-card {
+    .card-item {
+        a {
+            display: block;
+            img {
+                width: 100%;
+                @include border-radius(4px);
+                @include transition(filter 0.2s)
+            }
+            &.card-img {
+                position: relative;
+                overflow: hidden;
+                &:hover {
+                    img {
+                        filter: contrast(1.25);
+                    }
+                }
+            }
+            &.card-title {
+                font-size: $paragraph*2.4;
+                letter-spacing: 0.24em;
+                line-height: 1.25;
+                @media screen and (min-width: 1024px) {
+                    font-size: $paragraph*3.2;
+                }
+            }
+        }
+        div {
+            font-size: $paragraph*1.6;
+            font-weight: 300;
+            letter-spacing: 0.24em;
+            @media screen and (min-width: 1024px) {
+                font-size: $paragraph*2.1;
+            }
+        }
+    }
+}

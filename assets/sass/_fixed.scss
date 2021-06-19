@@ -1,0 +1,60 @@
+.fixed-cart {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    box-shadow: 0 -5px 20px rgba($black, 0.05);
+    z-index: 1;
+    .line-btn {
+        display: block;
+        color: $black;
+        white-space: nowrap;
+        &:hover {
+            color: $line;
+        }
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .icon-line {
+            font-size: $paragraph*2;
+        }
+        span {
+            padding-left: $paragraph;
+            padding-right: $paragraph;
+            font-size: $paragraph*1.6;
+            @media screen and (min-width: 576px) {
+                padding-right: $paragraph*6;
+            }
+        }
+    }
+    form {
+        width: 100%;
+    }
+}
+
+.fixed-fuction {
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    text-align: center;
+    @include translateY(-50%);
+    z-index: 1;
+    @media screen and (min-width: 1024px) {
+        right: 40px;
+    }
+    a {
+        display: block;
+        font-size: $paragraph*2.6;
+        @include box-shadow(0 0 20px 0 rgba($black, 0.2));
+        &:hover {
+            @include box-shadow(0 0 20px 0 rgba($black, 0.3));
+        }
+        + a {
+            margin-top: 10px;
+        }
+    }
+}

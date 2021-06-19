@@ -1,0 +1,105 @@
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba($black, 0.4);
+	z-index: 10;
+	.modal-dialog {
+		margin: 1.75rem 20px;
+		min-height: calc(100% - 3.5rem);
+	}
+	.modal-content {
+		position: relative;
+		max-width: 500px;
+		width: 100%;
+		padding: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: $white;
+		@include box-shadow(0 0 5px rgba($black, 0.2));
+		@include border-radius(4px);
+		@include breakpoint(768px) {
+			padding: 40px;
+        }
+		form {
+			.g-signin2 {
+				width: 100% !important;
+				height: 100% !important;
+				background-color: $white;
+				border: 1px solid $gray-500;
+				@include border-radius(4px);
+				@include transition(color .2s, border .2s, background .2s, box-shadow .2s);
+				&:hover {
+					border-color: $gray-700;
+				}	
+				> .abcRioButton {
+					width: 100% !important;
+					height: 100% !important;
+					background-color: transparent !important;
+					box-shadow: none !important;
+				}
+				.abcRioButtonContentWrapper {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					box-shadow: none;
+				}
+			}
+			input[type='text'],
+			input[type='tel'],
+			input[type='password'] {
+				width: 100%;
+				padding: 10px 20px;
+				margin-bottom: 20px;
+				font-size: 1rem;
+				border: 1px solid $gray-400;
+				@include border-radius(4px);
+			}
+		}
+		img {
+			max-width: 100%;
+		}
+	}
+	.btn-close {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		padding: 5px;
+		border: 0;
+		background-color: transparent;
+		@include breakpoint(768px) {
+			top: 40px;
+			right: 40px;
+		}
+		i.icon {
+			display: block;
+			font-size: $paragraph*2;
+		}
+	}
+	.hr-or {
+		position: relative;
+		text-align: center;
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			@include beforeafter('', block);
+			width: 100%;
+			height: 1px;
+			background-color: $gray-300;
+		}
+		span {
+			position: relative;
+			display: table;
+			padding: 0 10px;
+			margin: 0 auto;
+			font-size: $paragraph*1.4;
+			line-height: 1;
+			background-color: $white;
+			z-index: 1;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+button.slick-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+button.slick-arrow.slick-prev {
+  left: 0;
+}
+button.slick-arrow.slick-next {
+  right: 0;
+}
+button.slick-arrow i.icon {
+  font-size: 2.5rem;
+}
+
+/*# sourceMappingURL=slick.css.map */
