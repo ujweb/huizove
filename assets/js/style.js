@@ -36,6 +36,7 @@ function y2bResize() {
 y2bResize();
 
 $('.navbar-toggler, nav.sidebar .btn-close').on('click', function(){
+	$('body').toggleClass('opened');
 	$('nav.sidebar, .black').toggleClass('opened');
 	$('nav.navcart').slideUp();
 });
@@ -46,7 +47,7 @@ $('.d-md-none .cart').on('click', function(){
 });
 
 $('.black').on('click', function(){
-	$('nav.sidebar, .black').removeClass('opened');
+	$('body, nav.sidebar, .black').removeClass('opened');
 });
 
 $('nav.sidebar ul.menu > li > a > button').on('click', function(e){
