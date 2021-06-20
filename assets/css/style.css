@@ -477,9 +477,6 @@ nav.navbar .navbar-nav li.nav-item .nav-link {
 }
 nav.navbar .navbar-nav li.nav-item .nav-link:hover {
   color: #77BF2B;
-}
-nav.navbar .navbar-nav li.nav-item.active .nav-link {
-  color: #77BF2B;
   border-bottom-color: #77BF2B;
 }
 @media screen and (max-width: 767px) {
@@ -1187,6 +1184,10 @@ button.slick-arrow i.icon {
   }
 }
 
+.product-area {
+  position: relative;
+  z-index: 1;
+}
 .product-area .product-header .col-img {
   width: 100%;
   letter-spacing: normal;
@@ -1197,7 +1198,6 @@ button.slick-arrow i.icon {
     top: 0;
     left: 0;
     width: 420px;
-    z-index: 1;
   }
 }
 .product-area .product-header .social-group a {

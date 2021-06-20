@@ -29,11 +29,6 @@ nav.navbar {
                     border-bottom: 2px solid transparent;
                     &:hover {
                         color: $primary;
-                    }
-                }
-                &.active {
-                    .nav-link {
-                        color: $primary;
                         border-bottom-color: $primary;
                     }
                 }
